@@ -1397,55 +1397,181 @@
   }
 
   /* ===== footer ===== */
-  footer{padding:56px 32px 40px;}
+  footer{
+    padding:72px 32px 42px;
+    background:#FFFFFF;
+  }
+
   .footer-inner{
+    width:100%;
     max-width:1180px;
     margin:0 auto;
   }
+
   .footer-top{
-    display:flex;
-    justify-content:space-between;
-    gap:40px;
-    flex-wrap:wrap;
-    margin-bottom:48px;
+    display:grid;
+    grid-template-columns:minmax(320px,1.4fr) minmax(500px,1fr);
+    column-gap:90px;
+    align-items:start;
+    margin-bottom:60px;
   }
 
-  .footer-brand .logo{color:var(--ink);}
-  .footer-brand .logo .logo-mark{background:var(--gold);}
+  .footer-brand{
+    min-width:0;
+    text-align:left;
+  }
+
+  .footer-brand .logo{
+    color:var(--ink);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:20px;
+    font-weight:600;
+    line-height:1;
+  }
+
+  .footer-brand .logo .logo-mark{
+    background:var(--gold);
+  }
+
   .footer-brand p{
     color:var(--ink-soft);
     font-size:14px;
-    max-width:32ch;
-    margin-top:14px;
+    line-height:1.65;
+    max-width:48ch;
+    margin:18px 0 0;
+    text-align:left;
   }
+
   .footer-cols{
-    display:flex;
-    gap:64px;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:50px;
+    width:100%;
+    align-items:start;
   }
+
+  .footer-col{
+    min-width:0;
+    text-align:left;
+  }
+
   .footer-col h4{
-    font-size:14px;
+    font-size:13px;
     color:var(--ink);
-    margin-bottom:14px;
+    margin:0 0 16px;
     font-weight:600;
+    letter-spacing:.01em;
   }
+
   .footer-col a{
     display:block;
     font-size:14px;
-    color:var(--ink);
+    color:var(--ink-soft);
     padding:5px 0;
+    line-height:1.45;
+    transition:color .25s ease,transform .25s ease;
   }
-  .footer-col a:hover{color:#B8860B;}
+
+  .footer-col a:hover{
+    color:#B8860B;
+    transform:translateX(2px);
+  }
+
   .footer-bottom{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:24px;
     padding-top:24px;
     border-top:1px solid var(--paper-line);
     font-size:13px;
     color:var(--ink-soft);
-    flex-wrap:wrap;
-    gap:16px;
+  }
+
+  .footer-bottom span{
+    line-height:1.5;
+  }
+
+  @media (max-width:1000px){
+    .footer-top{
+      grid-template-columns:1fr;
+      gap:48px;
+    }
+
+    .footer-brand p{
+      max-width:60ch;
+    }
+
+    .footer-cols{
+      max-width:720px;
+    }
+  }
+
+  @media (max-width:820px){
+    footer{
+      padding:52px 18px 30px!important;
+    }
+
+    .footer-top{
+      display:flex!important;
+      flex-direction:column;
+      gap:38px!important;
+      margin-bottom:36px!important;
+    }
+
+    .footer-brand{
+      width:100%;
+    }
+
+    .footer-brand p{
+      max-width:52ch!important;
+      font-size:14px!important;
+      line-height:1.6!important;
+      margin-top:16px!important;
+    }
+
+    .footer-cols{
+      display:grid!important;
+      grid-template-columns:1fr 1fr;
+      gap:32px 28px!important;
+      width:100%!important;
+      max-width:none!important;
+    }
+
+    .footer-col{
+      min-width:0!important;
+    }
+
+    .footer-col:last-child{
+      grid-column:1 / -1;
+    }
+
+    .footer-bottom{
+      align-items:flex-start!important;
+      flex-direction:column!important;
+      gap:8px!important;
+    }
+  }
+
+  @media (max-width:480px){
+    .footer-cols{
+      grid-template-columns:1fr 1fr!important;
+      gap:28px 20px!important;
+    }
+
+    .footer-col:last-child{
+      grid-column:1 / -1!important;
+    }
+
+    .footer-brand p{
+      max-width:100%!important;
+    }
+
+    .footer-bottom{
+      font-size:12px!important;
+    }
   }
 
   .gallery-photo img,.gallery-thumb img{
@@ -1701,6 +1827,306 @@ img{height:auto;}
   font-weight:700;
   display:inline-block;
   margin-right:4px;
+}
+
+
+
+/* =========================================================
+   FINAL TYPOGRAPHY + CONTENT ALIGNMENT FIX
+   Keeps all existing content/functionality, but gives the
+   editorial sections one consistent readable text column.
+   ========================================================= */
+
+/* Consistent desktop content width */
+.section,
+.method-inner,
+.whatget-inner,
+.rules-section,
+.bottlenecks-inner,
+.faq-inner,
+.teardown-inner,
+.footer-inner{
+  width:100%;
+  max-width:1180px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* HOW WE WORK */
+.section .section-head{
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(280px,360px);
+  align-items:end;
+  column-gap:72px;
+  margin-bottom:56px;
+}
+
+.section .section-head > div{
+  min-width:0;
+}
+
+.section .section-kicker{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:22px;
+  text-align:left;
+}
+
+.section .section-head h2{
+  margin:0;
+  max-width:17ch;
+  text-align:left;
+  font-size:clamp(42px,4vw,56px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+}
+
+.section .section-desc{
+  max-width:36ch;
+  margin:0 0 2px;
+  text-align:left;
+  line-height:1.6;
+}
+
+/* DARK METHOD */
+.method-section .method-inner,
+.faq-section .faq-inner{
+  text-align:left;
+}
+
+.method-section .method-kicker,
+.whatget-section .whatget-kicker,
+.rules-section .rules-kicker,
+.bottlenecks-section .bottlenecks-kicker,
+.faq-section .faq-kicker{
+  justify-content:flex-start;
+  text-align:left;
+}
+
+.method-section h2,
+.whatget-section h2,
+.rules-section h2,
+.bottlenecks-section h2,
+.faq-section h2{
+  text-align:left;
+  margin-left:0;
+  margin-right:auto;
+}
+
+.method-section h2{
+  max-width:20ch;
+  font-size:clamp(42px,4vw,56px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+  margin-bottom:24px;
+}
+
+.method-desc,
+.whatget-desc,
+.rules-desc,
+.bottlenecks-desc,
+.faq-desc{
+  text-align:left;
+  margin-left:0;
+  margin-right:auto;
+  line-height:1.6;
+}
+
+.method-desc{max-width:62ch;}
+
+.method-grid{
+  text-align:left;
+}
+
+/* WHAT YOU GET */
+.whatget-section h2,
+.rules-section h2,
+.bottlenecks-section h2,
+.faq-section h2{
+  font-size:clamp(42px,4vw,54px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+}
+
+.whatget-section h2{max-width:18ch;}
+.rules-section h2{max-width:18ch;}
+.bottlenecks-section h2{max-width:18ch;}
+.faq-section h2{max-width:18ch;}
+
+/* ACCORDION / FAQ CONTENT */
+.acc-list,
+.faq-grid{
+  width:100%;
+}
+
+.acc-summary,
+.acc-body,
+.faq-item{
+  text-align:left;
+}
+
+/* FOOTER — same left edge and a wider description */
+footer{
+  padding:72px 32px 42px;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:minmax(330px,1fr) minmax(480px,1.15fr);
+  column-gap:80px;
+  align-items:start;
+  margin-bottom:60px;
+}
+
+.footer-brand{
+  min-width:0;
+  text-align:left;
+}
+
+.footer-brand .logo{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  line-height:1;
+}
+
+.footer-brand p{
+  max-width:48ch;
+  margin:18px 0 0;
+  line-height:1.65;
+  text-align:left;
+}
+
+.footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:48px;
+  width:100%;
+  align-items:start;
+}
+
+.footer-col{
+  min-width:0;
+  text-align:left;
+}
+
+.footer-col h4{
+  margin-bottom:16px;
+}
+
+.footer-col a{
+  line-height:1.45;
+}
+
+.footer-bottom{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  text-align:left;
+}
+
+/* Keep all desktop sections visually aligned to the same grid */
+@media (min-width:821px){
+  .method-section,
+  .whatget-section,
+  .bottlenecks-section,
+  .faq-section{
+    padding-left:32px;
+    padding-right:32px;
+  }
+}
+
+/* TABLET */
+@media (max-width:1000px) and (min-width:821px){
+  .section .section-head{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .section .section-head h2,
+  .method-section h2,
+  .whatget-section h2,
+  .rules-section h2,
+  .bottlenecks-section h2,
+  .faq-section h2{
+    max-width:22ch;
+  }
+
+  .footer-top{
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+}
+
+/* MOBILE */
+@media (max-width:820px){
+  .section,
+  .method-inner,
+  .whatget-inner,
+  .rules-section,
+  .bottlenecks-inner,
+  .faq-inner,
+  .teardown-inner,
+  .footer-inner{
+    width:100%;
+    max-width:100%;
+  }
+
+  .section .section-head{
+    display:block;
+    margin-bottom:36px;
+  }
+
+  .section .section-kicker{
+    margin-bottom:16px;
+  }
+
+  .section .section-head h2,
+  .method-section h2,
+  .whatget-section h2,
+  .rules-section h2,
+  .bottlenecks-section h2,
+  .faq-section h2{
+    max-width:100%!important;
+    font-size:clamp(32px,9vw,44px)!important;
+    line-height:1.06!important;
+    letter-spacing:-.035em!important;
+  }
+
+  .section .section-desc{
+    max-width:100%;
+    margin-top:22px;
+  }
+
+  .footer-top{
+    display:flex!important;
+    flex-direction:column;
+    gap:38px!important;
+  }
+
+  .footer-brand p{
+    max-width:55ch!important;
+  }
+
+  .footer-cols{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:30px 24px!important;
+  }
+
+  .footer-col:last-child{
+    grid-column:1 / -1;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
 }
 
 </style>
